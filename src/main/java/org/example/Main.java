@@ -7,15 +7,15 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Welcome to Sharda Swiggy");
         System.out.println("Today's Special");
-        info("C:/Users/harsh/Documents/menu.csv");
+        info("C:\\Users\\harsh\\Documents\\menu.csv");
         Scanner sc=new Scanner(System.in);
         System.out.println("Select your Dish:");
         String dish=sc.nextLine();
-        if (dish.equalsIgnoreCase("Dal Makhni")){
+        if (dish.equalsIgnoreCase("Chole Bhature")){
             System.out.println("Here's the List of Some Famous Restaurants:");
-            info("C:/Users/harsh/Documents/rest.csv");
-        }else if(dish.equalsIgnoreCase("Butter Chicken")){
-            info("C:/Users/harsh/Documents/rate.csv");
+            info("C:\\Users\\harsh\\Documents\\rest.csv");
+        }else if(dish.equalsIgnoreCase("Chicken Tikka")){
+            info("C:\\Users\\harsh\\Documents\\rate.csv");
         }
         System.out.println("Select the Restaurant");
         String res=sc.nextLine();
