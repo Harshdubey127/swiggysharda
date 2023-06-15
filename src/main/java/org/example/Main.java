@@ -1,86 +1,46 @@
 package org.example;
 
-import java.io.*;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        System.out.println("Welcome to Sharda Swiggy");
-        System.out.println("Today's Special");
-        info("C:\\Users\\harsh\\Documents\\menu.csv");
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Select your Dish:");
-        String dish=sc.nextLine();
-        if (dish.equalsIgnoreCase("Chole Bhature")){
-            System.out.println("Here's the List of Some Famous Restaurants:");
-            info("C:\\Users\\harsh\\Documents\\rest.csv");
-        }else if(dish.equalsIgnoreCase("Chicken Tikka")){
-            info("C:\\Users\\harsh\\Documents\\rate.csv");
+    public static void main(String[] args) {
+        if (!validateCredentials()) {
+            System.out.println("Invalid username or password. Exiting...");
+            return;
         }
-        System.out.println("Select the Restaurant");
-        String res=sc.nextLine();
-        System.out.println("Enter the Payment Mode-");
-        System.out.println("1. Google Pay\n2. Paytm\n3. PayPal");
-        String pay=sc.nextLine();
-        System.out.println("Your Payment is being Processed");
-        int i = 0;
-        while(i < 21) {
-            System.out.print("[");
-            for (int j=0;j<i;j++) {
-                System.out.print("#");
-            }
+        else{
 
-            for (int j=0;j<20-i;j++) {
-                System.out.print(" ");
-            }
+            System.out.println("Welcome to Sharda Swiggy Delivery App Mr. Harsh");
 
-            System.out.print("] "+  i*5 + "%");
-            if(i<20) {
-                System.out.print("\r");
-                Thread.sleep(300);
-            }
-            i++;
+
+            // Display menu options
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Available Restaurants Choose from which you wanna enter");
+            Restro.displayMenu("C:\\Users\\harsh\\IdeaProjects\\swiggysharda\\data\\Restro.csv");
+            int restro = scanner.nextInt();
+
+
+            System.out.println("following are the available Dishes in your chosen restro");
+            Dish.displayMenu("C:\\Users\\harsh\\IdeaProjects\\swiggysharda\\data\\Menu.csv");
+
+
+            scanner.close();
         }
-        System.out.println();
-        System.out.println("Your Order is being Placed");
-        i = 0;
-        while(i < 21) {
-            System.out.print("[");
-            for (int j=0;j<i;j++) {
-                System.out.print("#");
-            }
-
-            for (int j=0;j<20-i;j++) {
-                System.out.print(" ");
-            }
-
-            System.out.print("] "+  i*5 + "%");
-            if(i<20) {
-                System.out.print("\r");
-                Thread.sleep(300);
-            }
-            i++;
-        }
-        System.out.println();
-        System.out.println("Your order will be ready in 20 minutes");
-
     }
-    private static void info(String filePath) {
-        String line="";
-        try {
-            BufferedReader reader=new BufferedReader(new FileReader(filePath));
-            while((line =reader.readLine())!= null){
-                String[] row=line.split(",");
-                for (String i: row){
-                    System.out.printf("%-30s",i);
-                }
-                System.out.println();
-            }
-        }
-        catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }catch (IOException e) {
-            throw new RuntimeException(e);
+
+    private static boolean validateCredentials() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your username:");
+        String username = scanner.nextLine();
+
+        System.out.println("Enter your password:");
+        String password = scanner.nextLine();
+
+        // Perform username and password validation
+        if (username.equals("Harsh") && password.equals("123")) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
