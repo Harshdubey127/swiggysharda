@@ -4,43 +4,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        if (!validateCredentials()) {
-            System.out.println("Invalid username or password. Exiting...");
-            return;
-        }
-        else{
+        System.out.println("Welcome to Sharda Swiggy Delivery App Mr. Harsh");
+        System.out.println();
 
-            System.out.println("Welcome to Sharda Swiggy Delivery App Mr. Harsh");
-
-
-            // Display menu options
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Available Restaurants Choose from which you wanna enter");
-            Restro.displayMenu("C:\\Users\\harsh\\IdeaProjects\\swiggysharda\\data\\Restro.csv");
-            int restro = scanner.nextInt();
-
-
-            System.out.println("following are the available Dishes in your chosen restro");
-            Dish.displayMenu("C:\\Users\\harsh\\IdeaProjects\\swiggysharda\\data\\Menu.csv");
-
-
-            scanner.close();
-        }
-    }
-
-    private static boolean validateCredentials() {
+        // Display menu options
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your username:");
-        String username = scanner.nextLine();
+        System.out.println("Available Restaurants Choose from whic h you wanna enter"+"\n");
+        Restro.displayMenu("C:\\Users\\harsh\\IdeaProjects\\swiggysharda\\data\\Restro1.csv");
+        System.out.println("\n"+"Choose resturant to continue");
+        int restro = scanner.nextInt();
+        System.out.println();
 
-        System.out.println("Enter your password:");
-        String password = scanner.nextLine();
+        Dish.menu(restro);
+        Dish.displayMenu("C:\\Users\\harsh\\IdeaProjects\\swiggysharda\\data\\Menu.csv");
 
-        // Perform username and password validation
-        if (username.equals("Harsh") && password.equals("123")) {
-            return true;
-        } else {
-            return false;
-        }
+        System.out.println("\n"+"Choose Dishes you want to eat by their Dish Id");
+
+
+
+        scanner.close();
     }
 }
